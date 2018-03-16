@@ -1,0 +1,21 @@
+---
+title: Kolekcja
+desc: Przykład Jekyllowej kolekcji
+order: 3
+layout: default
+---
+<main>
+    <article>
+        <h2>{{page.title}}</h2>
+        <ul class="thumbs-list">
+            {% for p in site.col %}
+            <li>
+                <a href="{{ p.url }}">
+                    <img src="/img/collection/thumbs/{{p.img}}" alt="miniaturka jakiegoś obrazka">
+                    <h4>{{ p.title }}</h4>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </article>
+</main>

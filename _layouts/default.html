@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{ page.title }} | {{site.name}}</title>
+  <link rel="stylesheet" href="{{ "/css/style.css" | relative_url }}">
+  <link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,700&amp;subset=latin-ext" rel="stylesheet">
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+      <h2 class="logo">
+        <a href="/">
+          {{site.name}}
+        </a>
+      </h2>
+      <div class="nav-holder">
+        <nav class="main-nav">
+          <ul>
+            {% for link in site.data.navigation %}
+            <li>
+              {% if link.url == "/"%}
+              <a href="{{ link.url }}" class="link">{{ link.title }}</a>
+
+              {% elsif page.url contains link.url %}
+              <a href="{{ link.url }}" class="link active">{{ link.title }}</a>
+              {% else %}
+              <a href="{{ link.url }}" class="link">{{ link.title }}</a>
+              {%endif%}
+            </li>
+            {% endfor %}
+          </ul>
+        </nav>
+      </div>
+    </header>
+      {{ content }}
+    <footer>
+      <p class="copyright">&copy; 2018
+        <a href="mailto:pmisiuk@gmail.com">{{site.name}}</a>
+      </p>
+    </footer>
+  </div>
+</body>
+
+</html>

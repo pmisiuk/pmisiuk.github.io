@@ -1,17 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>pmisiuk.github.io</title>
-    <link rel="stylesheet" href="css/style.css">
-    <meta name="theme-color" content="#ffc404">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,700&amp;subset=latin-ext" rel="stylesheet">
-</head>
-<body>
-    <h1>pmisiuk.github.io</h1>
-    <a href="mailto:pmisiuk@gmail.com">Kontakt</a>
-</body>
-</html>
+---
+title: Home
+desc: Opis page.desc
+order: 1
+layout: default
+---
+<main>
+    <article>
+        <h2>{{page.title}}</h2>
+        <p>
+            Witaj na {{site.name}}
+        </p>
+        <h3>Uwaga!</h3>
+        <p>
+            Strona nie zaiwera treści.
+        </p>
+        <p>
+            Zalecana rozdzielczość: powyżej 1200 w poziomie :-)
+        </p>
+        <p>
+            Jeśli nie słuchasz powyższego i HOME się schowa, możesz użyć tego pochylonego czegoś...
+        </p>
+        <div class="flex">
+
+            <section>
+                <h3>News:</h3>
+                <ul class="thumbs-list">
+                    {% for p in site.posts limit: 3 %}
+                    <li>
+                        <a href="{{ p.url }}">
+                            <img src="/img/news/thumbs/{{p.img}}" alt="miniaturka jakiegoś obrazka">
+                            <h3>{{p.title}}</h3>
+                            <span>{{ p.date | date: "%d-%m-%Y" }}</span>
+
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
+    <code>
+        strona powstała w celu opanowania <a href="https://jekyllrb.com/">jekyll</a>
+    </code>
+</article>
+</main>
