@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#FFCD36">
   <title>{{ page.title }} | {{site.name}}</title>
   <link rel="stylesheet" href="{{ "/css/style.css" | relative_url }}">
   <link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,700&amp;subset=latin-ext" rel="stylesheet">
@@ -13,13 +14,13 @@
 <body>
   <div class="wrapper">
     <header>
-      <h2 class="logo">
-        <a href="/">
-          {{site.name}}
-        </a>
-      </h2>
       <div class="nav-holder">
         <nav class="main-nav">
+          <h2 class="logo">
+          <a href="/">
+              PM
+            </a>
+          </h2>
           <ul>
             {% for link in site.data.navigation %}
             <li>

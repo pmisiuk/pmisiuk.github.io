@@ -22,7 +22,8 @@ $shadow: 0 0 10px 1px rgba(0, 0, 0, 0.8)
   box-sizing: border-box
 
 body
-  background-color: $bg-color
+  background-color: rgba(0,0,0,0.1)
+  background-image: url("/img/dust_scratches.png")
   color: $txt-color
   font-family: "Maven Pro", "lucida sans unicode", "lucida grande", "arial unicode ms", tahoma, sans-serif
 
@@ -33,26 +34,28 @@ a
     text-decoration: underline
 
 .wrapper
-  // max-width: 1200px
-  width: 90vw
+  background-color: white
+  max-width: 1000px
+  padding-top: 20px
+
   margin: 0 auto
-  box-shadow: $shadow
+  // box-shadow: $shadow
+  position: relative
 
 .logo
-  position: absolute
-  left: -100px
-  top: -20px
-  width: 27em
-  margin-top: 50px
-  background-color: $theme-color
-  text-transform: uppercase
-  text-align: center
-  font-size: 1rem
+  font-size: 1,5rem
   font-weight: 700
   line-height: 2.5
-  transform: rotate(-30deg)
-  box-shadow: $shadow
+  display: block
+  position: absolute
+  left: 0
+  top: 0
+  width: 4em
+  text-align: center
+  float: right
+  border: 15px solid $txt-color
   a
+    background-color: $theme-color
     color: $txt-color
     display: block
 
@@ -61,30 +64,44 @@ nav li
   text-transform: uppercase
   font-size: 1rem
 .nav-holder
-  padding-left: 100px
+ 
   margin-bottom: 40px
-  background-color: $grey
 .main-nav
-  padding-top: 10px
-  overflow: hidden
-  width: 90%
-  margin: 0 auto
+  ul
+    padding-left: 100px
+    display: flex
+    justify-content: space-around
+    li
+      
+  
+  background-color: $grey
+  // overflow: hidden
+
   font-weight: 700
+  // display: flex
+  // flex-direction: row
+  // align-content: space-around
   .link
+    // margin-top: 2em
     color: $theme-color
-    float: left
+    // flex: 1
     padding: 7px 20px 7px
+    display: block
+    
+    
+    
   .active
     background-color: $theme-color
     color: $grey
 
 
 main
-  width: 90%
-  margin: 0 auto
+  // width: 90%
+  // margin: 0 auto
+  padding: 15px
 
 article
-  max-width: 900px
+  // max-width: 900px
   min-height: 100vh
   margin: 0 auto
   span
@@ -145,6 +162,7 @@ article
       display: block
 .news
   max-width: 400px
+  margin: 0 auto
   text-align: right
   a
     display: block
@@ -166,6 +184,32 @@ article
   .date
     font-weight: 400
     font-size: 0.7rem
+.contact
+  width: 50%
+  padding: 100px
+  margin: 0 auto
+  background-image: url("/img/dust_scratches.png")
+  text-align: center
+  label
+    display: block
+    margin-bottom: 1em
+    font-size: 1rem
+    line-height: 1.5
+  input, textarea
+    display: block
+    margin: 0 auto
+    border: 2px solid $theme-color
+    font-size: 1rem
+  .btn
+    border: none
+    background: $theme-color
+    padding: 1em 2em
+    margin-top: 2em
+    color: #4f4f4f
+    font-family: inherit
+    font-weight: 700
+    text-transform: uppercase
+    
 footer
   background-color: $grey
   color: $theme-color
