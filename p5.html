@@ -5,8 +5,17 @@ layout: default
 ---
 <main>
     <article>
-        <h2 class="none">{{page.title}}</h2>
+        <h1 class="none">{{page.title}}</h1>
+        <h3>About P5.JS</h3>
+        <p>
+            What is P5? Visit: <a href="https://p5js.org/">P5.JS</a>
+        </p>
+        <p>
+            YT channel where you can learn P5: 
+            <a href="https://www.youtube.com/user/shiffman">The Coding Train</a>
+        </p>
         <ul class="p5-list">
+            <h3>My tryings:</h3>
             {% for p in site.p5 %}
             <li>
                 <a href="{{ p.url }}">

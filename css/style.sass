@@ -30,8 +30,6 @@ body
 a
   text-decoration: none
   color: $txt-color
-  &:hover
-    text-decoration: underline
 
 .wrapper
   background-color: white
@@ -64,7 +62,6 @@ nav li
   text-transform: uppercase
   font-size: 1rem
 .nav-holder
- 
   margin-bottom: 40px
 .main-nav
   ul
@@ -108,10 +105,22 @@ article
     margin-bottom: 1em
   img
     width: 100%
+  a
+    border-bottom: 2px solid $theme-color
+    &:hover
+      font-weight: 700
+footer
+  background-color: $grey
+  color: $theme-color
+  margin-top: 100px
+  border-top: 1px dashed $txt-color
+  text-align: center
+  line-height: 3em
+  a
+    color: $theme-color
 .flex
   display: flex
   justify-content: center
-
 
 .snav
   margin-top: 100px
@@ -164,6 +173,7 @@ article
   text-align: right
   a
     display: block
+    border-bottom: none
   h3
     margin-bottom: 30px
   li
@@ -201,22 +211,13 @@ article
   .btn
     border: none
     background: $theme-color
-    padding: 1em 2em
+    padding: 0.5em 2em
     margin-top: 2em
     color: #4f4f4f
     font-family: inherit
     font-weight: 700
     text-transform: uppercase
     
-footer
-  background-color: $grey
-  color: $theme-color
-  margin-top: 100px
-  border-top: 1px dashed $txt-color
-  text-align: center
-  line-height: 3em
-  a
-    color: $theme-color
 
 // P5
 
