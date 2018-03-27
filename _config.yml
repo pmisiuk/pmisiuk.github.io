@@ -7,3 +7,5 @@ breadcrumbs:
 collections:
   col:
     output: true
+  p5:
+    output: true

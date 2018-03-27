@@ -1,0 +1,39 @@
+*
+    margin: 0
+    padding: 0
+
+body
+    overflow: hidden
+
+.menu
+    position: absolute
+    left: 10px
+    top: 10px
+    display: flex
+    flex-direction: column
+    button
+        width: 30px
+        height: 30px
+        margin: 5px
+        border: none
+        border-radius: 50%
+        background-color: rgba(100,100,100,0.2)
+        svg
+            fill: rgba(255, 255, 255, 0.3)
+        &:hover
+            svg
+                fill: rgba(255,255,255,0.7)
+
+.settings
+    display: none
+    color: white
+    position: absolute
+    background-color: rgba(100,100,100,0.2)
+    left: 100px
+    top: 20px
+    input
+        display: inline-block
+    span
+        margin-left: 10px
+    &.open-settings
+        display: block

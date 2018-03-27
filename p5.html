@@ -1,16 +1,15 @@
 ---
-title: Kolekcja
-desc: Przykład Jekyllowej kolekcji
+title: P5
+desc: Using P5.JS
 layout: default
 ---
 <main>
     <article>
         <h2 class="none">{{page.title}}</h2>
-        <ul class="thumbs-list">
-            {% for p in site.col %}
+        <ul class="p5-list">
+            {% for p in site.p5 %}
             <li>
                 <a href="{{ p.url }}">
-                    <img src="/img/collection/thumbs/{{p.img}}" alt="miniaturka jakiegoś obrazka">
                     <h4>{{ p.title }}</h4>
                 </a>
             </li>
