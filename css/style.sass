@@ -88,6 +88,8 @@ nav li
   .active
     background-color: $theme-color
     color: $grey
+  .mobile-nav-toggle
+    display: none
 
 
 main
@@ -99,10 +101,12 @@ article
   // max-width: 900px
   min-height: 100vh
   margin: 0 auto
+  
   span
     font-size: 0.7rem
   h1, h2, h3, h4, p, img
     margin-bottom: 1em
+  
   img
     width: 100%
   a
@@ -194,7 +198,7 @@ footer
     font-size: 0.7rem
 .contact
   width: 50%
-  padding: 100px
+  padding: 5vw
   margin: 0 auto
   background-image: url("/img/dust_scratches.png")
   text-align: center
@@ -260,3 +264,62 @@ footer
         margin-left: 10px
     &.open-settings
         display: block
+
+@media(max-width: 640px)
+  .logo
+    width: 2.8em
+    font-size: 0.7rem
+    border: 2px solid $txt-color
+    margin: 5px
+  .main-nav
+    &.is-open
+      ul
+        padding: 20px
+        transform: translateY(270px)
+        box-shadow: 0px 0px 0px 4000px rgba(100,100,100,0.7)
+    ul
+      transition: all 0.3s ease-in-out
+      position: absolute
+      top: -250px
+      left: 50%
+      flex-direction: column
+      background: $txt-color
+      padding-left: 0
+      li
+        margin: 0.5em
+        &:hover
+          background: #000
+    .mobile-nav-toggle
+      width: 30px
+      height: 30px
+      background-color: $theme-color
+      display: block
+      position: absolute
+      right: 5px
+      top: 5px
+      display: flex
+      align-items: center
+      span,
+      span::before,
+      span::after
+        content: ""
+        width: 30px
+        display: block
+        height: 2px
+        background: $txt-color
+        position: absolute
+        transition: all 0.3s ease-in-out
+        
+      span::before
+        top: -10px
+      span::after
+        top: 10px
+    &.is-open span
+      background: transparent        
+    &.is-open span::before,
+    &.is-open span::after
+      transform-origin: center
+      transform: rotate(45deg)
+      top: 0
+    &.is-open span::before
+      transform: rotate(-45deg)
