@@ -1,0 +1,61 @@
+---
+layout: p5
+---
+<script>
+    const divSettings = document.querySelector('.settings');
+    let size, posX, posY;
+
+    function makeLabel(name) {
+        let newLabel = createSpan();
+        newLabel.parent(divSettings);
+        newLabel.html(name + "<br>");
+        return;
+    }
+    let n = 0;
+    let c = 4;
+
+  
+    
+    function draw() {
+    }
+    function setup() {
+        createCanvas(windowWidth, windowHeight);
+        size = createSlider(5, 300, 10, 1);
+        posX = createSlider(0, width, width / 2, 1);
+        posY = createSlider(0, height, height / 2, 1);
+        size.parent(divSettings);
+        makeLabel("size");
+        posX.parent(divSettings);
+        makeLabel("posX");
+        posY.parent(divSettings);
+        makeLabel("posY");
+        textSize(15);
+        background(0);
+        
+        angleMode(DEGREES);
+        colorMode(HSB);        
+    }
+
+    function draw() {
+        let s = size.value();
+        let pX = posX.value();
+        let pY = posY.value();
+
+        let a = n * 137.5; //try 137.3 or 137.6 [137.5]
+        let r = c * sqrt(n);
+        let x = r * cos(a) + width / 2;
+        let y = r * sin(a) + height / 2;
+        fill((a - r) % 256, 255, 255);  // try n or a a-r
+        noStroke();
+        ellipse(x, y, 4);
+        n++;
+    }
+    
+    function windowResized() {
+        resizeCanvas(windowWidth, windowHeight);
+    }
+
+    const settingsBtn = document.querySelector(".settings-btn");
+    const settings = document.querySelector('.settings');
+    settingsBtn.addEventListener('click', () => settings.classList.toggle('open-settings'));
+</script>

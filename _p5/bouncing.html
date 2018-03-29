@@ -1,0 +1,81 @@
+---
+layout: p5
+---
+<script>
+    const divSettings = document.querySelector('.settings');
+    let size, posX, posY;
+
+    function makeLabel(name) {
+        let newLabel = createSpan();
+        newLabel.parent(divSettings);
+        newLabel.html(name + "<br>");
+        return;
+    }
+    let a, b, rA, rB, vxA, vyA, vxB, vyB, speed;
+
+    function setup() {
+        createCanvas(windowWidth, windowHeight);
+        size = createSlider(5, 300, 10, 1);
+        posX = createSlider(0, width, width / 2, 1);
+        posY = createSlider(0, height, height / 2, 1);
+        size.parent(divSettings);
+        makeLabel("size");
+        posX.parent(divSettings);
+        makeLabel("posX");
+        posY.parent(divSettings);
+        makeLabel("posY");
+        textSize(15);
+        a = createVector(random(width), random(height));
+        b = createVector(random(width), random(height));
+        rA = 10;
+        rB = 20;
+        speed = 10;
+        vxA = (50 - rA) / speed;
+        vxB = (50 - rB) / speed;
+        vyA = (50 - rA) / speed;
+        vyB = (50 - rB) / speed;
+    }
+
+    function draw() {
+        background(0);
+        stroke(100);
+        fill(100);
+        textSize(32);
+        text(floor(frameRate()), 5, 125);
+        strokeWeight(2);
+        ellipse(a.x, a.y, rA * 2);
+        ellipse(b.x, b.y, rB * 2);
+        beginShape();
+        vertex(a.x, a.y);
+        vertex(b.x, b.y);
+        endShape();
+        move(a, b);
+
+    }
+
+    function move(a, b) {
+
+        a.x += vxA;
+        a.y += vyA;
+        b.x += vxB;
+        b.y += vyB;
+        if (a.x + rA > width) vxA = -vxA;
+        if (a.y + rA > height) vyA = -vyA;
+        if (a.x - rA < 0) vxA = -vxA;
+        if (a.y - rA < 0) vyA = -vyA;
+        if (b.x + rB > width) vxB = -vxB;
+        if (b.y + rB > height) vyB = -vyB;
+        if (b.x - rB < 0) vxB = -vxB;
+        if (b.y - rB < 0) vyB = -vyB;
+
+
+    }
+
+    function windowResized() {
+        resizeCanvas(windowWidth, windowHeight);
+    }
+
+    const settingsBtn = document.querySelector(".settings-btn");
+    const settings = document.querySelector('.settings');
+    settingsBtn.addEventListener('click', () => settings.classList.toggle('open-settings'));
+</script>

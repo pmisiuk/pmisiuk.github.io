@@ -1,0 +1,72 @@
+---
+layout: p5
+---
+<script>
+    const divSettings = document.querySelector('.settings');
+    let size, posX, posY;
+
+    function makeLabel(name) {
+        let newLabel = createSpan();
+        newLabel.parent(divSettings);
+        newLabel.html(name + "<br>");
+        return;
+    }
+    const lines = [];
+    function setup() {
+        createCanvas(windowWidth, windowHeight);
+        size = createSlider(5, 300, 10, 1);
+        posX = createSlider(0, width, width / 2, 1);
+        posY = createSlider(0, height, height / 2, 1);
+        size.parent(divSettings);
+        makeLabel("size");
+        posX.parent(divSettings);
+        makeLabel("posX");
+        posY.parent(divSettings);
+        makeLabel("posY");
+        textSize(15);
+        for (let i = 0; i < 12; i++) {
+            lines[i] = new L(i * 50, 0);
+        }
+        stroke(51);
+        strokeWeight(2);
+    }
+
+    function rC() {
+        return color(random(255), random(255), random(255));
+    }
+
+    function displayLines(lines) {
+        for (l of lines) {
+            if (l.x > width) {
+                l.x = 0;
+                stroke(rC());
+            }
+            l.show();
+            l.x += 1;
+        }
+    }
+    function draw() {
+        let s = size.value();
+        let pX = posX.value();
+        let pY = posY.value();
+        background(0, 50);
+        displayLines(lines);
+    }
+
+    function windowResized() {
+        resizeCanvas(windowWidth, windowHeight);
+    }
+
+    class L {
+        constructor(x, y) {
+            this.x = x
+            this.y = y
+        }
+        show() {
+            line(this.x, this.y, random(width), random(height / 3, height));
+        }
+    }
+    const settingsBtn = document.querySelector(".settings-btn");
+    const settings = document.querySelector('.settings');
+    settingsBtn.addEventListener('click', () => settings.classList.toggle('open-settings'));
+</script>
