@@ -14,7 +14,7 @@ layout: p5
 
     function setup() {
         createCanvas(windowWidth, windowHeight);
-        size = createSlider(5, 300, 10, 1);
+        size = createSlider(5, 300, 80, 1);
         posX = createSlider(0, width, width / 2, 1);
         posY = createSlider(0, height, height / 2, 1);
         size.parent(divSettings);
@@ -24,7 +24,6 @@ layout: p5
         posY.parent(divSettings);
         makeLabel("posY");
         textSize(15);
-
     }
 
     function draw() {
@@ -33,17 +32,8 @@ layout: p5
         let pY = posY.value();
         background(0);
         stroke(255);
-        noFill();
-        drawCircle(300, 200, 300);
-    }
-    function drawCircle(x, y, d) {
-        ellipse(x, y, d);
-        if (d > 2) {
-            drawCircle(x + d * 0.5, y, d * 0.5);
-            drawCircle(x - d * 0.5, y, d * 0.5);
-            drawCircle(x, y + d * 0.5, d * 0.5);
-
-        }
+        fill('#FFCD36');
+        ellipse(pX, pY, s);
     }
 
     function windowResized() {

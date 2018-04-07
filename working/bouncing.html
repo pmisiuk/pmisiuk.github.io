@@ -15,20 +15,20 @@ layout: p5
 
     function setup() {
         createCanvas(windowWidth, windowHeight);
-        size = createSlider(5, 300, 10, 1);
-        posX = createSlider(0, width, width / 2, 1);
-        posY = createSlider(0, height, height / 2, 1);
-        size.parent(divSettings);
-        makeLabel("size");
+        // size = createSlider(5, 300, 10, 1);
+        posX = createSlider(10, 100, 10, 1);
+        posY = createSlider(10, 100, 20, 1);
+        // size.parent(divSettings);
+        // makeLabel("size");
         posX.parent(divSettings);
-        makeLabel("posX");
+        makeLabel("A size");
         posY.parent(divSettings);
-        makeLabel("posY");
+        makeLabel("B size");
         textSize(15);
         a = createVector(random(width), random(height));
         b = createVector(random(width), random(height));
         rA = 10;
-        rB = 20;
+        rB =20;
         speed = 10;
         vxA = (50 - rA) / speed;
         vxB = (50 - rB) / speed;
@@ -37,11 +37,13 @@ layout: p5
     }
 
     function draw() {
+        rA = posX.value();
+        rB =posY.value();
         background(0);
         stroke(100);
         fill(100);
-        textSize(32);
-        text(floor(frameRate()), 5, 125);
+        // textSize(32);
+        // text(floor(frameRate()), 5, 125);
         strokeWeight(2);
         ellipse(a.x, a.y, rA * 2);
         ellipse(b.x, b.y, rB * 2);
@@ -50,7 +52,6 @@ layout: p5
         vertex(b.x, b.y);
         endShape();
         move(a, b);
-
     }
 
     function move(a, b) {
@@ -67,8 +68,6 @@ layout: p5
         if (b.y + rB > height) vyB = -vyB;
         if (b.x - rB < 0) vxB = -vxB;
         if (b.y - rB < 0) vyB = -vyB;
-
-
     }
 
     function windowResized() {
