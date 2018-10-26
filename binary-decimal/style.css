@@ -14,3 +14,8 @@ body {
 canvas {
   margin-top: 1rem;
 }
+
+button {
+  all: unset;
+  margin: 0 .5em;
+}
