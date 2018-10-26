@@ -7,14 +7,14 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  background(0);
 	sevenSegment(nums[index]);
 	index = (index + 1) % nums.length;
 }
 
 function getColor(val, shift) {
-	const r = 255;
-	const g = 0;
+	const r = 0;
+	const g = 225;
 	const b = 0;
 	const a = 255 * ((val >> shift) & 1);
 	
@@ -40,5 +40,4 @@ function sevenSegment(val) {
 	fill(getColor(val, 0));
 	rect(60, 140, 80, 20);
 	pop();
-	
 }
