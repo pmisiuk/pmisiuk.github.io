@@ -1,0 +1,157 @@
+---
+layout: p5
+---
+<style>
+    body {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        text-align: center;
+        color: #fff;
+    }
+
+    canvas {
+        margin-top: 1rem;
+    }
+
+    .btn-shift {
+        all: unset;
+        margin: 0 .5em;
+    }
+
+    p, .btn-shift {
+        font-size: 3rem;
+    }
+</style>
+
+<script>
+    const divSettings = document.querySelector('.settings');
+    let size, posX, posY;
+
+    function makeLabel(name) {
+        let newLabel = createSpan();
+        newLabel.parent(divSettings);
+        newLabel.html(name + "<br>");
+        return;
+    }
+
+    class Bit {
+        constructor(x, y, d) {
+            this.x = x;
+            this.y = y;
+            this.diameter = d;
+            this.state = false;
+        }
+
+        setState(state) {
+            this.state = Boolean(parseInt(state));
+        }
+
+        toggle (x, y) {
+            let d = dist(x, y, this.x, this.y);
+            if (d< this.diameter/2) {
+            this.state = !this.state;
+            }
+        }
+
+        show() {
+            noStroke();
+            if (this.state) {
+            fill(255, 200, 0);
+            } else {
+            fill(255);
+            }
+            ellipse(this.x, this.y, this.diameter);
+        }
+    }
+
+    let num = '';
+    let byte = [];
+    let shiftLeft;
+    let shiftRight;
+    let decimalP;
+
+    function mousePressed() {
+        for (let i=0; i < byte.length; i++) {
+            byte[i].toggle(mouseX, mouseY);
+        }
+    }
+
+    function setup() {
+        createCanvas(400, 100);
+        frameRate(12);
+        binaryToDecimal(num);
+        decimalP = createP('');
+        shiftLeft = createButton('<<');
+        shiftRight = createButton('>>');
+        shiftLeft.addClass('btn-shift');
+        shiftRight.addClass('btn-shift');
+        shiftLeft.mousePressed(shiftBitsLeft);
+        shiftRight.mousePressed(shiftBitsRight);
+
+        let w = width/8;
+        for (let i=0; i<8; i++) {
+            byte[i] = new Bit(w/2 + i * w, 50, w - 4);
+            byte[i].setState(num.charAt(i));
+        }
+    }
+
+    function shiftBitsLeft() {
+        let num = getBinaryString();
+        let val = binaryToDecimal(num);
+        val = val << 1;
+        num = decimalToBinary(val);
+        for (let i=0; i<8; i++) {
+            byte[i].setState(num.charAt(i));
+        }
+    }
+
+    function shiftBitsRight() {
+        let num = getBinaryString();
+        let val = binaryToDecimal(num);
+        val = val >> 1;
+        num = decimalToBinary(val);
+        for (let i=0; i<8; i++) {
+            byte[i].setState(num.charAt(i));
+        }
+    }
+
+    function getBinaryString() {
+        num = '';
+        for (let i=7; i>-1; i--) {
+            byte[i].show();
+            num += byte[i].state ? '1' : '0';
+        }
+        return num;
+    }
+
+    function draw() {
+        background(0);
+
+        decimalP.html(binaryToDecimal(getBinaryString()));
+    }
+
+    function binaryToDecimal(val) {
+        let sum = 0;
+        for (let i=val.length-1; i>-1; i--) {
+            let bit = val.charAt(i);
+            sum += parseInt(bit * pow(2, i));
+        }
+        return sum;
+    }
+
+    function decimalToBinary(val) {
+        let bits = '';
+        let rem = val;
+
+        for (let i = 7; i >= 0; i--) {
+            let div = pow(2, i);
+            let bitVal = floor(rem / div);
+            bits += bitVal;
+            rem = rem % div;
+        }
+        return bits;
+    }
+
+    const settingsBtn = document.querySelector(".settings-btn");
+    const settings = document.querySelector('.settings');
+    settingsBtn.addEventListener('click', () => settings.classList.toggle('open-settings'));
+</script>
