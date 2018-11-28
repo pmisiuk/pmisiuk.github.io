@@ -11,13 +11,13 @@
  * See https://goo.gl/2aRDsh
  */
 
-importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.2/workbox-sw.js");
+importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.2970f7c00d7d72fa0a49004791451a58.js"
+  "precache-manifest.4e0de09faf7d40fcfc1e06468d1e4795.js"
 );
 
-workbox.core.setCacheNameDetails({prefix: "meetup"});
+workbox.core.setCacheNameDetails({prefix: "notes"});
 
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to
