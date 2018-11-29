@@ -32,7 +32,7 @@ self.__precacheManifest = [
     "url": "js/chunk-vendors.e52a4431.js"
   },
   {
-    "revision": "8fa1e45165c582f7c186cd6041d1a2be",
+    "revision": "aefb20fa5324ce7e14387fcddc6c8513",
     "url": "index.html"
   },
   {
