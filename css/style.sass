@@ -26,7 +26,6 @@ body
   background-image: url("/img/dust_scratches.png")
   color: $txt-color
   font-family: "Maven Pro", "lucida sans unicode", "lucida grande", "arial unicode ms", tahoma, sans-serif
-
 a
   text-decoration: none
   color: $txt-color
@@ -96,10 +95,10 @@ main
   // width: 90%
   // margin: 0 auto
   padding: 15px
+  min-height: calc(100vh - (49px + 190px))
 
 article
   // max-width: 900px
-  min-height: 100vh
   margin: 0 auto
   
   span
@@ -197,10 +196,9 @@ footer
     font-weight: 400
     font-size: 0.7rem
 .contact
-  width: 50%
   padding: 5vw
+  max-width: 600px
   margin: 0 auto
-  background-image: url("/img/dust_scratches.png")
   text-align: center
   label
     display: block
@@ -209,7 +207,8 @@ footer
     line-height: 1.5
   input, textarea
     display: block
-    margin: 0 auto
+    width: 100%
+    margin: .5em auto 0
     border: 2px solid $theme-color
     font-size: 1rem
   .btn
@@ -221,7 +220,11 @@ footer
     font-family: inherit
     font-weight: 700
     text-transform: uppercase
-    
+    cursor: pointer
+    transition: background 200ms
+    &:hover
+      background: darken($theme-color, 10%)
+
 
 // P5
 
@@ -267,6 +270,8 @@ footer
         display: block
 
 @media(max-width: 640px)
+  main
+    min-height: calc(100vh - 210px)
   .logo
     width: 2.8em
     font-size: 0.7rem
