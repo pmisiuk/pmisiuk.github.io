@@ -1,29 +1,10 @@
----
-title: Home
-desc: Opis page.desc
-layout: default
----
-<main>
-    <article>
-        <h1>{{page.title}} -  {{site.name}}</h1>
-        
-        <div class="flex">
-
-            <section>
-                <h3>News:</h3>
-                <ul class="thumbs-list">
-                    {% for p in site.posts limit: 3 %}
-                    <li>
-                        <a href="{{ p.url }}">
-                            <img src="/img/news/thumbs/{{p.img}}" alt="miniaturka jakiegoś obrazka">
-                            <h3>{{p.title}}</h3>
-                            <span>{{ p.date | date: "%d-%m-%Y" }}</span>
-
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </section>
-    </div>    
-</article>
-</main>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PM on GH</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body><main></main><script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js" integrity="sha512-WIklPM6qPCIp6d3fSSr90j+1unQHUOoWDS4sdTiR8gxUTnyZ8S2Mr8e10sKKJ/bhJgpAa/qG068RDkg6fIlNFA==" crossorigin="anonymous"></script><script src="index.js"></script></body>
+</html>
